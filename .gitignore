@@ -1,0 +1,29 @@
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Compilados
+*.class
+bin/
+target/
+build/
+
+# Paquetes y logs
+*.jar
+*.war
+*.log
+hs_err_pid*
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Otros editores
+.vscode/
+.classpath
+.project
+.settings/
