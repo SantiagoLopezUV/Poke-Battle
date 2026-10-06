@@ -141,10 +141,32 @@ public class PokeStadiums {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String namePokeSelected = tfName_1.getText();
-                Pokemon poke1 = new Pokemon().getPoke(namePokeSelected);
-                showPokemon1(poke1);
+
+                try {
+                    String jsonBody = PokeApiClient.fetchJson(namePokeSelected);
+                    JSONObject json = new JSONObject(jsonBody);
+
+                    Pokemon poke1 = new Pokemon();
+
+                    //crear metodos para consultar objetos
+                    poke1.setId(Integer.parseInt(String.valueOf(json.getInt("id"))));
+                    poke1.setName(String.valueOf(json.getString("name")));
+
+                    //crear metodos para consultar arreglos (estadisticas(stats) y slots(type))
+                    //poke1.setType(String.valueOf(json.getString("type")));
+                   // poke1.setAttack(Integer.parseInt(String.valueOf(json.getInt("attack"))));
+                    showPokemon1(poke1);
+                } catch (PokemonException ex)
+                {
+                    JOptionPane.showMessageDialog(null,"El pokemon no existe");
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
+
+
+        ///crear un metodo de batalla que reciba los dos pokemones y calcule al diferencia
 
         LOADButton2.addActionListener(new ActionListener() {
             @Override
@@ -186,10 +208,9 @@ public class PokeStadiums {
 
 
 
-    public void lookPokemon(){
+    public void lookPokemon(String namePokemon){
         try
         {
-            String namePokemon = JOptionPane.showInputDialog("Ingrese el nombre del pokemon");
 
             String jsonBody = PokeApiClient.fetchJson(namePokemon);
             JSONObject json = new JSONObject(jsonBody);
@@ -220,9 +241,6 @@ public class PokeStadiums {
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
         frame.setResizable(true);
-
-        lookPokemon();
-
     }
 
 
