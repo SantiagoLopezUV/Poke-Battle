@@ -1,7 +1,13 @@
 package ui;
 
+import model.Pokemon;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 public class PokeStadiums {
     private JPanel JPanelArena;
@@ -87,6 +93,83 @@ public class PokeStadiums {
         lbl_Fighter_1.setIcon(new ImageIcon(original.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH)));
         lbl_Fighter_2.setIcon(new ImageIcon(original.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH)));
 
+        String placeHolderWritePoke = "Escribe un Pokemon";
+        this.tfName_1.setText(placeHolderWritePoke);
+        this.tfName_1.setForeground(Color.GRAY);
+        this.tfName_2.setText(placeHolderWritePoke);
+        this.tfName_2.setForeground(Color.GRAY);
+
+
+        this.tfName_1.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e){
+                if(tfName_1.getText().equals(placeHolderWritePoke)){
+                    tfName_1.setText("");
+                    tfName_1.setForeground(Color.BLACK);
+                }
+            }
+            @Override
+            public void focusLost(FocusEvent e){
+                if (tfName_1.getText().isBlank()){
+                    tfName_1.setText(placeHolderWritePoke);
+                    tfName_1.setForeground(Color.GRAY);
+                }
+            }
+        });
+
+        this.tfName_2.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e){
+                if(tfName_2.getText().equals(placeHolderWritePoke)){
+                    tfName_2.setText("");
+                    tfName_2.setForeground(Color.BLACK);
+                }
+            }
+            @Override
+            public void focusLost(FocusEvent e){
+                if (tfName_2.getText().isBlank()){
+                    tfName_2.setText(placeHolderWritePoke);
+                    tfName_2.setForeground(Color.GRAY);
+                }
+            }
+        });
+
+
+        LOADButton1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String namePokeSelected = tfName_1.getText();
+                JPanelName_SetName_1.setText(namePokeSelected);
+                JPanelName_SetType_1.setText("");
+                JPanelStats_lblSetAttack_1.setText("");
+                JPanelStats_lblSetDefense_1.setText("");
+                JPanelStats_lblSetHp_1.setText("");
+                JPanelStats_lblSetSpeed_1.setText("");
+                loadProgressBar(JPanelBar_ProgressBar1, new Pokemon());
+            }
+        });
+
+        LOADButton2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String namePokeSelected = tfName_2.getText();
+                JPanelName_SetName_2.setText(namePokeSelected);
+                JPanelName_SetType_1.setText("");
+                JPanelStats_lblSetAttack_1.setText("");
+                JPanelStats_lblSetDefense_1.setText("");
+                JPanelStats_lblSetHp_1.setText("");
+                JPanelStats_lblSetSpeed_1.setText("");
+                loadProgressBar(JPanelBar_ProgressBar1, new Pokemon());
+            }
+        });
+    }
+
+    private void loadProgressBar(JProgressBar ProgressBar, Pokemon poke) {
+        ProgressBar.setMinimum(0);
+        ProgressBar.setMaximum(poke.getHp());
+        ProgressBar.setValue(poke.getCurrentHp());
+        ProgressBar.setStringPainted(true);
+        ProgressBar.setString(poke.getCurrentHp() + "/" + poke.getHp());
     }
 
     static void main() {
