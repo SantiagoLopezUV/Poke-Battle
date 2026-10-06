@@ -99,7 +99,6 @@ public class PokeStadiums {
         this.tfName_2.setText(placeHolderWritePoke);
         this.tfName_2.setForeground(Color.GRAY);
 
-
         this.tfName_1.addFocusListener(new FocusAdapter() {
             @Override
             public void focusGained(FocusEvent e){
@@ -139,13 +138,8 @@ public class PokeStadiums {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String namePokeSelected = tfName_1.getText();
-                JPanelName_SetName_1.setText(namePokeSelected);
-                JPanelName_SetType_1.setText("");
-                JPanelStats_lblSetAttack_1.setText("");
-                JPanelStats_lblSetDefense_1.setText("");
-                JPanelStats_lblSetHp_1.setText("");
-                JPanelStats_lblSetSpeed_1.setText("");
-                loadProgressBar(JPanelBar_ProgressBar1, new Pokemon());
+                Pokemon poke1 = new Pokemon().getPoke(namePokeSelected);
+                showPokemon1(poke1);
             }
         });
 
@@ -153,13 +147,8 @@ public class PokeStadiums {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String namePokeSelected = tfName_2.getText();
-                JPanelName_SetName_2.setText(namePokeSelected);
-                JPanelName_SetType_1.setText("");
-                JPanelStats_lblSetAttack_1.setText("");
-                JPanelStats_lblSetDefense_1.setText("");
-                JPanelStats_lblSetHp_1.setText("");
-                JPanelStats_lblSetSpeed_1.setText("");
-                loadProgressBar(JPanelBar_ProgressBar1, new Pokemon());
+                Pokemon poke2 = new Pokemon().getPoke(namePokeSelected);
+                showPokemon2(poke2);
             }
         });
     }
@@ -170,6 +159,26 @@ public class PokeStadiums {
         ProgressBar.setValue(poke.getCurrentHp());
         ProgressBar.setStringPainted(true);
         ProgressBar.setString(poke.getCurrentHp() + "/" + poke.getHp());
+    }
+
+    private void showPokemon1(Pokemon p1){
+        JPanelName_SetName_1.setText(p1.getName());
+        JPanelName_SetType_1.setText(p1.getType());
+        JPanelStats_lblSetAttack_1.setText(String.valueOf(p1.getAttack()));
+        JPanelStats_lblSetDefense_1.setText(String.valueOf(p1.getDefense()));
+        JPanelStats_lblSetHp_1.setText(String.valueOf(p1.getHp()));
+        JPanelStats_lblSetSpeed_1.setText(String.valueOf(p1.getSpeed()));
+        loadProgressBar(JPanelBar_ProgressBar1, p1);
+    }
+
+    private void showPokemon2(Pokemon p2){
+        JPanelName_SetName_2.setText(p2.getName());
+        JPanelName_SetType_2.setText(p2.getType());
+        JPanelStats_lblSetAttack_2.setText(String.valueOf(p2.getAttack()));
+        JPanelStats_lblSetDefense_2.setText(String.valueOf(p2.getDefense()));
+        JPanelStats_lblSetHp_2.setText(String.valueOf(p2.getHp()));
+        JPanelStats_lblSetSpeed_2.setText(String.valueOf(p2.getSpeed()));
+        loadProgressBar(JPanelBar_ProgressBar2, p2);
     }
 
     static void main() {

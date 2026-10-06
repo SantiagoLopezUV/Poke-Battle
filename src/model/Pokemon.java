@@ -11,6 +11,10 @@ public class Pokemon {
     private String urlSprite;
     private int currentHp;
 
+    public Pokemon getPoke(String namePoke){
+        System.out.printf(namePoke);
+        return null;
+    }
 
     public int getId() {
         return id;
