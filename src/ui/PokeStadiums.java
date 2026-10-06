@@ -1,6 +1,9 @@
 package ui;
 
+import api.PokeApiClient;
+import exceptions.PokemonException;
 import model.Pokemon;
+import org.json.JSONObject;
 
 import javax.swing.*;
 import java.awt.*;
@@ -181,7 +184,35 @@ public class PokeStadiums {
         loadProgressBar(JPanelBar_ProgressBar2, p2);
     }
 
-    static void main() {
+
+
+    public void lookPokemon(){
+        try
+        {
+            String namePokemon = JOptionPane.showInputDialog("Ingrese el nombre del pokemon");
+
+            String jsonBody = PokeApiClient.fetchJson(namePokemon);
+            JSONObject json = new JSONObject(jsonBody);
+
+            System.out.println("Conectada");
+
+            System.out.println("ID Pokémon: " + json.getInt("id"));
+            System.out.println("Nombre: " + json.getString("name"));
+            System.out.println("Peso: " + json.getInt("weight"));
+            System.out.println("Altura: " + json.getInt("height"));
+
+        } catch (PokemonException e)
+        {
+            JOptionPane.showMessageDialog(null,"El pokemon no existe");
+        }catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(null, "Error al procesar la solicitud: " + e.getMessage(), "Error inesperado", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        }
+    }
+
+    private static final PokeApiClient apiClient = new PokeApiClient();
+    void main() {
         JFrame frame = new JFrame("PokeApi");
         frame.setContentPane(new PokeStadiums().mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -190,7 +221,11 @@ public class PokeStadiums {
         frame.setLocationRelativeTo(null);
         frame.setResizable(true);
 
+        lookPokemon();
 
     }
+
+
+
 }
 
