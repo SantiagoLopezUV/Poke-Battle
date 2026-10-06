@@ -1,6 +1,9 @@
 package ui;
 
+import api.PokeApiClient;
+import exceptions.PokemonException;
 import model.Pokemon;
+import org.json.JSONObject;
 
 import javax.swing.*;
 import java.awt.*;
@@ -138,10 +141,32 @@ public class PokeStadiums {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String namePokeSelected = tfName_1.getText();
-                Pokemon poke1 = new Pokemon().getPoke(namePokeSelected);
-                showPokemon1(poke1);
+
+                try {
+                    String jsonBody = PokeApiClient.fetchJson(namePokeSelected);
+                    JSONObject json = new JSONObject(jsonBody);
+
+                    Pokemon poke1 = new Pokemon();
+
+                    //crear metodos para consultar objetos
+                    poke1.setId(Integer.parseInt(String.valueOf(json.getInt("id"))));
+                    poke1.setName(String.valueOf(json.getString("name")));
+
+                    //crear metodos para consultar arreglos (estadisticas(stats) y slots(type))
+                    //poke1.setType(String.valueOf(json.getString("type")));
+                   // poke1.setAttack(Integer.parseInt(String.valueOf(json.getInt("attack"))));
+                    showPokemon1(poke1);
+                } catch (PokemonException ex)
+                {
+                    JOptionPane.showMessageDialog(null,"El pokemon no existe");
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
+
+
+        ///crear un metodo de batalla que reciba los dos pokemones y calcule al diferencia
 
         LOADButton2.addActionListener(new ActionListener() {
             @Override
@@ -181,7 +206,34 @@ public class PokeStadiums {
         loadProgressBar(JPanelBar_ProgressBar2, p2);
     }
 
-    static void main() {
+
+
+    public void lookPokemon(String namePokemon){
+        try
+        {
+
+            String jsonBody = PokeApiClient.fetchJson(namePokemon);
+            JSONObject json = new JSONObject(jsonBody);
+
+            System.out.println("Conectada");
+
+            System.out.println("ID Pokémon: " + json.getInt("id"));
+            System.out.println("Nombre: " + json.getString("name"));
+            System.out.println("Peso: " + json.getInt("weight"));
+            System.out.println("Altura: " + json.getInt("height"));
+
+        } catch (PokemonException e)
+        {
+            JOptionPane.showMessageDialog(null,"El pokemon no existe");
+        }catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(null, "Error al procesar la solicitud: " + e.getMessage(), "Error inesperado", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        }
+    }
+
+    private static final PokeApiClient apiClient = new PokeApiClient();
+    void main() {
         JFrame frame = new JFrame("PokeApi");
         frame.setContentPane(new PokeStadiums().mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -189,8 +241,9 @@ public class PokeStadiums {
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
         frame.setResizable(true);
-
-
     }
+
+
+
 }
 
