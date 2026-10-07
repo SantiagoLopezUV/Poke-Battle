@@ -1,5 +1,8 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 public class Pokemon {
     private int id;
     private String name;
@@ -11,9 +14,15 @@ public class Pokemon {
     private String urlSprite;
     private int currentHp;
 
-    public Pokemon getPoke(String namePoke){
-        System.out.printf(namePoke);
-        return null;
+//    public Pokemon getPoke(String namePoke){
+//        System.out.printf(namePoke);
+//        return null;
+//    }
+
+    public Pokemon(){}
+
+    public boolean isFatality() { // para verficar si el hp del pokemon esta en 0
+        return this.currentHp <= 0;
     }
 
     public int getId() {
