@@ -1,5 +1,6 @@
 package ui;
 
+import api.LoadPokemon;
 import api.PokeApiClient;
 import exceptions.PokemonException;
 import model.Pokemon;
@@ -90,6 +91,7 @@ public class PokeStadiums {
     private JPanel JPanelBattle;
 
     public PokeStadiums() {
+
         ImageIcon original = new ImageIcon(getClass().getResource("/ui/resources/pokebola.png"));
         Image escalada = original.getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH);
         lblPoke.setIcon(new ImageIcon(escalada));
@@ -136,32 +138,10 @@ public class PokeStadiums {
             }
         });
 
-
         LOADButton1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String namePokeSelected = tfName_1.getText();
-
-                try {
-                    String jsonBody = PokeApiClient.fetchJson(namePokeSelected);
-                    JSONObject json = new JSONObject(jsonBody);
-
-                    Pokemon poke1 = new Pokemon();
-
-                    //crear metodos para consultar objetos
-                    poke1.setId(Integer.parseInt(String.valueOf(json.getInt("id"))));
-                    poke1.setName(String.valueOf(json.getString("name")));
-
-                    //crear metodos para consultar arreglos (estadisticas(stats) y slots(type))
-                    //poke1.setType(String.valueOf(json.getString("type")));
-                   // poke1.setAttack(Integer.parseInt(String.valueOf(json.getInt("attack"))));
-                    showPokemon1(poke1);
-                } catch (PokemonException ex)
-                {
-                    JOptionPane.showMessageDialog(null,"El pokemon no existe");
-                } catch (Exception ex) {
-                    throw new RuntimeException(ex);
-                }
+                loadPokemon(tfName_1, 1);
             }
         });
 
@@ -171,9 +151,7 @@ public class PokeStadiums {
         LOADButton2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String namePokeSelected = tfName_2.getText();
-                Pokemon poke2 = new Pokemon().getPoke(namePokeSelected);
-                showPokemon2(poke2);
+                loadPokemon(tfName_2, 2);
             }
         });
     }
@@ -207,28 +185,31 @@ public class PokeStadiums {
     }
 
 
-
-    public void lookPokemon(String namePokemon){
+    private void loadPokemon(JTextField name, int numPlayer) {
+        String namepokemon = name.getText().trim();
         try
         {
-
-            String jsonBody = PokeApiClient.fetchJson(namePokemon);
-            JSONObject json = new JSONObject(jsonBody);
-
-            System.out.println("Conectada");
-
-            System.out.println("ID Pokémon: " + json.getInt("id"));
-            System.out.println("Nombre: " + json.getString("name"));
-            System.out.println("Peso: " + json.getInt("weight"));
-            System.out.println("Altura: " + json.getInt("height"));
-
-        } catch (PokemonException e)
+            if(namepokemon.isEmpty() || namepokemon.equalsIgnoreCase("Escribe un pokemon"))
+            {
+                throw new PokemonException.InvalidName();
+            }
+            //cargar el pokemon
+            Pokemon pokemon = LoadPokemon.load(namepokemon);
+            if (numPlayer == 1)
+            {
+                showPokemon1(pokemon);
+            } else {
+                showPokemon2(pokemon);
+            }
+        } catch (PokemonException.NotFound ex)
         {
-            JOptionPane.showMessageDialog(null,"El pokemon no existe");
-        }catch (Exception e)
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        } catch (PokemonException.ApiError ex)
         {
-            JOptionPane.showMessageDialog(null, "Error al procesar la solicitud: " + e.getMessage(), "Error inesperado", JOptionPane.ERROR_MESSAGE);
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        } catch (Exception ex)
+        {
+            JOptionPane.showMessageDialog(null,  ex.getMessage());
         }
     }
 
@@ -242,8 +223,5 @@ public class PokeStadiums {
         frame.setLocationRelativeTo(null);
         frame.setResizable(true);
     }
-
-
-
 }
 
