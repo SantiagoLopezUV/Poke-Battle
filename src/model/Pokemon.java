@@ -14,11 +14,6 @@ public class Pokemon {
     private String urlSprite;
     private int currentHp;
 
-//    public Pokemon getPoke(String namePoke){
-//        System.out.printf(namePoke);
-//        return null;
-//    }
-
     public Pokemon(){}
 
     public boolean isFatality() { // para verficar si el hp del pokemon esta en 0
