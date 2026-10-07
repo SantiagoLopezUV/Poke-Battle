@@ -64,7 +64,7 @@ public class PokeStadiums implements BattleListener {
     private JLabel JPanelStats_lblSetSpeed_1;
     private JProgressBar JPanelBar_ProgressBar1;
     private JLabel JPanelBar_lblTittleHp_1;
-    private JPanel mainPanel;
+    public JPanel mainPanel;
     private JPanel JPanelRight;
     private JPanel JPanelTittle_2;
     private JPanel JPanelDetails_2;
@@ -108,6 +108,8 @@ public class PokeStadiums implements BattleListener {
     private boolean fightLocked = false; // true mientras hay un ganador pendiente de nuevo combate
     private final List<TurnStep> shifts = new ArrayList<>();
     private String winnerPending;
+
+    private static final PokeApiClient apiClient = new PokeApiClient();
 
     public PokeStadiums() {
 
@@ -422,15 +424,6 @@ public class PokeStadiums implements BattleListener {
 
 
 
-    private static final PokeApiClient apiClient = new PokeApiClient();
-    void main() {
-        JFrame frame = new JFrame("PokeApi");
-        frame.setContentPane(new PokeStadiums().mainPanel);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
-        frame.setLocationRelativeTo(null);
-        frame.setResizable(true);
-    }
+
 }
 
