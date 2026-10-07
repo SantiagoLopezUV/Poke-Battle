@@ -25,13 +25,14 @@ public class PokeApiClient {
         HttpResponse<String> response =
                 client.send(request, HttpResponse.BodyHandlers.ofString()); //peticion que convierte la respuesta a string
 
+        //se ejecuta primero, si no encuentra nada devuelve la excepcion
         if (response.statusCode() == 404) {
-            throw new PokemonException(pokemonName);
+            throw new PokemonException.NotFound(pokemonName);
         }
-        if (response.statusCode() != 200) {
-            throw new RuntimeException("Error de red: código " + response.statusCode());
+        if (response.statusCode() != 200) { //si cualquier otro diferente de 200 se interrumpe
+            throw new PokemonException.ApiError(response.statusCode());
         }
-
+        //si no se cumple lo anterior, devuelve el JSON
         return response.body(); // JSON como String
     }
 }
