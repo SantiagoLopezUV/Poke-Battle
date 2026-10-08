@@ -37,7 +37,6 @@ Los datos (nombre, estadísticas, habilidades y sprite) no están guardados en e
 <a href="https://docs.oracle.com/javase/tutorial/uiswing/"><img src="https://img.shields.io/badge/Swing-GUI-007396?style=for-the-badge" title="Java Swing" alt="Java Swing" width="48" height="48"/></a>
 <a href="https://pokeapi.co/"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png" title="PokeAPI / Pokémon" alt="Pokémon" width="48" height="48"/></a>
 
-
 </div>
 
 <div align="center">
@@ -69,14 +68,26 @@ Si el nombre no existe, la API responde con código `404` y la aplicación muest
 Poke-Battle/
 ├── README.md
 └── src/
-    ├── Main.java              # Punto de entrada
+    ├── api/                        
+    │   ├── LoadPokemon.java        # Carga un Pokémon
+    │   ├── PokeApiClient.java      # Consumo de PokeAPI
+    │   └── PokeApiParser.java      # Lectura del JSON, lo convierte y setea atributos del Pokemon
+    ├── battle/
+    │   ├── Battle.java             # Logica de batalla 
+    │   └── BattleListener.java     # Interfaz para los eventos del combate en la GUI
+    ├── exceptions/
+    │   └── PokemonException.java   # Control de excepciones para errores del juego
+    ├── libs/
+    │   └── json-20230227.jar       # Libreria  
     ├── model/
-    │   └── Pokemon.java       # Datos del Pokémon
-    ├── api/
-    │   └── PokeApiClient.java # Consumo de PokeAPI y lectura del JSON
-    └── ui/
-        ├── PokeStadiums.java    # Lógica de la interfaz
-        └── PokeStadiums.form    # Diseño del formulario (IntelliJ GUI Designer)
+    │   └── Pokemon.java            # Datos del Pokémon
+    ├── ui/
+    │   ├── resources
+    │   └── PokeStadiums
+    │       ├── PokeStadiums.java   # Lógica de la interfaz
+    │       └── PokeStadiums.form   # Diseño del formulario (IntelliJ GUI Designer)
+    └── Main.java                   # Punto de entrada
+        
 ```
 
 ## Cómo ejecutar
@@ -86,9 +97,10 @@ Poke-Battle/
    git clone https://github.com/SantiagoLopezUV/Poke-Battle.git
    ```
 2. Ábrelo con **IntelliJ IDEA**.
-3. Verifica que la librería `org.json` esté agregada (*File → Project Structure → Libraries*).
+3. Verifica que la librería `org.json` esté agregada (*File → Project Structure → Libraries*). Si no aparece, agrega `src/libs/json-20230227.jar`
 4. Ejecuta la clase `Main`.
-5. Presiona el botón **Aleatorio** o escribe el nombre de un Pokémon (por ejemplo, `pikachu`) y presiona **Cargar**.
+5. Presiona el botón **RANDOM** o escribe el nombre de un Pokémon (por ejemplo, `pikachu`) y presiona **LOAD**.
+6. Presiona el botón **FIGHT** para iniciar el combate.
 
 > **Requisitos:** JDK 22 o superior y conexión a internet.
 
