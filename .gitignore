@@ -12,7 +12,7 @@ target/
 build/
 
 # Paquetes y logs
-*.jar
+# *.jar
 *.war
 *.log
 hs_err_pid*
