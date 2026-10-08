@@ -53,9 +53,9 @@ public class Battle
 
         Pokemon ganador;
         if (pokemon1.isFatality()) {
-            ganador = pokemon1;
-        } else {
             ganador = pokemon2;
+        } else {
+            ganador = pokemon1;
         }
         notifyBattleEnded(ganador.getName());
 
