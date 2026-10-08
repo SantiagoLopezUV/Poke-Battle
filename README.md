@@ -67,6 +67,7 @@ Si el nombre no existe, la API responde con código `404` y la aplicación muest
 ```
 Poke-Battle/
 ├── README.md
+├── screenshots
 └── src/
     ├── api/                        
     │   ├── LoadPokemon.java        # Carga un Pokémon
