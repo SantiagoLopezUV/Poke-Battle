@@ -104,6 +104,12 @@ Poke-Battle/
 
 > **Requisitos:** JDK 22 o superior y conexión a internet.
 
+## Capturas
+
+![Pantalla principal](screenshots/home.png)
+![Combate](screenshots/fight.png)
+![Resultado](screenshots/logs.png)
+
 ## Equipo de desarrollo
 
 <div align="center">
@@ -126,6 +132,8 @@ Poke-Battle/
 </table>
 
 </div>
+
+
 
 ## Créditos y aviso legal
 
