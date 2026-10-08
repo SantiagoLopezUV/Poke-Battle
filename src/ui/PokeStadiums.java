@@ -18,6 +18,7 @@ import java.util.Random;
 import java.net.URL;
 
 import javax.swing.*;
+import javax.swing.text.DefaultCaret;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -100,6 +101,7 @@ public class PokeStadiums implements BattleListener {
     private JTextArea taRegisterBattle;
     private JLabel lbl_TittleRegisterBattle;
     private JPanel JPanelBattle;
+    private JScrollPane JScrollPanelBattle;
 
     private Pokemon pokemon1;
     private Pokemon pokemon2;
@@ -119,6 +121,8 @@ public class PokeStadiums implements BattleListener {
         lbl_Fighter_1.setIcon(new ImageIcon(original.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH)));
         lbl_Fighter_2.setIcon(new ImageIcon(original.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH)));
 
+        DefaultCaret caret = (DefaultCaret) taRegisterBattle.getCaret();
+        caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
 
         FIGHTButton.setEnabled(false);
 
@@ -297,7 +301,6 @@ public class PokeStadiums implements BattleListener {
         if (pokemon1 == null || pokemon2 == null) {
             return;
         }
-
         taRegisterBattle.setText(""); // limpiar los logs cuando se reinice
         shifts.clear(); //limpiar los turnos
         winnerPending = null;

@@ -6,13 +6,13 @@
       <xy x="20" y="20" width="1280" height="900"/>
     </constraints>
     <properties>
-      <maximumSize width="1280" height="800"/>
-      <minimumSize width="1280" height="720"/>
-      <preferredSize width="1280" height="800"/>
+      <maximumSize width="1280" height="680"/>
+      <minimumSize width="1280" height="680"/>
+      <preferredSize width="1280" height="680"/>
     </properties>
     <border type="none"/>
     <children>
-      <grid id="f6d96" binding="JPanelArena" layout-manager="GridLayoutManager" row-count="7" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="f6d96" binding="JPanelArena" layout-manager="GridLayoutManager" row-count="5" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="1" use-parent-layout="false"/>
@@ -26,9 +26,9 @@
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
               <grid row="1" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                <minimum-size width="1100" height="110"/>
-                <preferred-size width="1100" height="110"/>
-                <maximum-size width="1100" height="110"/>
+                <minimum-size width="1100" height="100"/>
+                <preferred-size width="1100" height="100"/>
+                <maximum-size width="1100" height="100"/>
               </grid>
             </constraints>
             <properties>
@@ -166,7 +166,7 @@
           <grid id="65378" binding="JPanelLeft" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
-              <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
                 <minimum-size width="500" height="500"/>
                 <preferred-size width="500" height="500"/>
                 <maximum-size width="500" height="500"/>
@@ -180,7 +180,7 @@
               <grid id="92d0c" binding="JPanelTittle_1" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                 <margin top="0" left="0" bottom="0" right="0"/>
                 <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="2" fill="1" indent="0" use-parent-layout="false">
                     <minimum-size width="-1" height="40"/>
                     <preferred-size width="-1" height="40"/>
                     <maximum-size width="-1" height="40"/>
@@ -452,10 +452,14 @@
                       </grid>
                       <component id="c4508" class="javax.swing.JLabel" binding="lbl_Image_1">
                         <constraints>
-                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                            <minimum-size width="80" height="80"/>
+                            <preferred-size width="80" height="80"/>
+                            <maximum-size width="80" height="80"/>
+                          </grid>
                         </constraints>
                         <properties>
-                          <text value="icono"/>
+                          <text value=""/>
                         </properties>
                       </component>
                     </children>
@@ -477,7 +481,7 @@
           <grid id="a9e4b" binding="JPanelCenter" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
-              <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+              <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
                 <minimum-size width="100" height="200"/>
                 <preferred-size width="100" height="200"/>
                 <maximum-size width="100" height="200"/>
@@ -516,7 +520,7 @@
           <grid id="c7711" binding="JPanelRight" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
-              <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+              <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
                 <minimum-size width="500" height="500"/>
                 <preferred-size width="500" height="500"/>
                 <maximum-size width="500" height="500"/>
@@ -530,7 +534,7 @@
               <grid id="1aea9" binding="JPanelTittle_2" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                 <margin top="0" left="0" bottom="0" right="0"/>
                 <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="2" fill="1" indent="0" use-parent-layout="false">
                     <minimum-size width="-1" height="40"/>
                     <preferred-size width="-1" height="40"/>
                     <maximum-size width="-1" height="40"/>
@@ -802,10 +806,14 @@
                       </grid>
                       <component id="a027" class="javax.swing.JLabel" binding="lbl_Image_2">
                         <constraints>
-                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                            <minimum-size width="80" height="80"/>
+                            <preferred-size width="80" height="80"/>
+                            <maximum-size width="80" height="80"/>
+                          </grid>
                         </constraints>
                         <properties>
-                          <text value="icono"/>
+                          <text value=""/>
                         </properties>
                       </component>
                     </children>
@@ -826,7 +834,7 @@
           </grid>
           <vspacer id="ae980">
             <constraints>
-              <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+              <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
             </constraints>
           </vspacer>
           <vspacer id="26c0c">
@@ -836,27 +844,39 @@
           </vspacer>
           <hspacer id="32d07">
             <constraints>
-              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
           </hspacer>
           <hspacer id="22a81">
             <constraints>
-              <grid row="3" column="4" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
           </hspacer>
-          <vspacer id="c0356">
-            <constraints>
-              <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-            </constraints>
-          </vspacer>
           <grid id="d2b2b" binding="JPanelBattle" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
-              <grid row="5" column="1" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <grid row="3" column="1" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                <minimum-size width="-1" height="150"/>
+                <preferred-size width="-1" height="150"/>
+                <maximum-size width="-1" height="150"/>
+              </grid>
             </constraints>
             <properties/>
             <border type="none"/>
             <children>
+              <scrollpane id="4047a" binding="JScrollPanelBattle">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="2f7e3" class="javax.swing.JTextArea" binding="taRegisterBattle">
+                    <constraints/>
+                    <properties/>
+                  </component>
+                </children>
+              </scrollpane>
               <component id="fa3fa" class="javax.swing.JLabel" binding="lbl_TittleRegisterBattle">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
@@ -867,21 +887,8 @@
                   <text value="REGISTRO DE BATALLA"/>
                 </properties>
               </component>
-              <component id="5d112" class="javax.swing.JTextArea" binding="taRegisterBattle">
-                <constraints>
-                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                    <preferred-size width="150" height="50"/>
-                  </grid>
-                </constraints>
-                <properties/>
-              </component>
             </children>
           </grid>
-          <vspacer id="f8aaa">
-            <constraints>
-              <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-            </constraints>
-          </vspacer>
         </children>
       </grid>
     </children>
